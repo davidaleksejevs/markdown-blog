@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
       description: "test desc",
     },
   ];
-  res.render("index", { articles: articles });
+  res.render("articles/index", { articles: articles });
 });
 
 app.listen(3000, () => {
