@@ -1,2 +1,3 @@
 # markdown blog
- this is a full curd markdown blog
+
+this is a full crud markdown blog
