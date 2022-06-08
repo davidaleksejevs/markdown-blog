@@ -2,9 +2,14 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const articelRouter = require("./routes/articles");
-app.use("/articles", articelRouter);
+const mongoose = require("mongoose");
 //
+app.use("/articles", articelRouter);
 app.set("view engine", "ejs");
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect("mongodb://localhost:27017/blog");
+}
 //
 app.get("/", (req, res) => {
   const articles = [
