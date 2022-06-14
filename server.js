@@ -4,7 +4,7 @@ const port = 3000;
 const articelRouter = require("./routes/articles");
 const mongoose = require("mongoose");
 //
-app.use("/articles", articelRouter);
+app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 main().catch((err) => console.log(err));
 async function main() {
@@ -25,3 +25,5 @@ app.get("/", (req, res) => {
 app.listen(3000, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+app.use("/articles", articelRouter);
