@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 main().catch((err) => console.log(err));
+
 async function main() {
   await mongoose.connect("mongodb://localhost:27017/blog");
 }
