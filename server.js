@@ -4,9 +4,11 @@ const port = 3000;
 const Article = require("./models/article");
 const articelRouter = require("./routes/articles");
 const mongoose = require("mongoose");
+const methodOverride = require("method-override");
 //
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 main().catch((err) => console.log(err));
 
 async function main() {
