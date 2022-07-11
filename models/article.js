@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 const slugify = require("slugify");
 const marked = require("marked");
 const createDomPurifier = require("dompurify");
-const { JSDOM } = requrie("jsdom");
+const { JSDOM } = require("jsdom");
 const dompurify = createDomPurifier(new JSDOM().window);
 
 const articleSchema = new Schema({
@@ -27,11 +27,19 @@ const articleSchema = new Schema({
     required: true,
     unique: true,
   },
+  sanitizedHtml: {
+    type: String,
+    required: true,
+  },
 });
 
 articleSchema.pre("validate", function (next) {
   if (this.title) {
     this.slug = slugify(this.title, { lower: true, strict: true });
+  }
+
+  if (this.markdown) {
+    this.sanitizedHtml = dompurify.sanitize(marked(this.markdown));
   }
   next();
 });
