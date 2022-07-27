@@ -21,6 +21,6 @@
     "slugify": "^1.6.5"
   },
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.19"
   }
 }
