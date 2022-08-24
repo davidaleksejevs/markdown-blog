@@ -25,7 +25,7 @@ router.post("/", async (req, res) => {
     article = await article.save();
     res.redirect(`/articles/${article.slug}`);
   } catch (e) {
-    // res.render("articles/new", { article: article });
+    res.render("articles/new", { article: article });
     console.log(e);
   }
 });
